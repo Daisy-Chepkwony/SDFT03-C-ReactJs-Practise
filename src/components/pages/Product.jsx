@@ -1,19 +1,19 @@
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
+import { getItems } from "../../helper/helpers";
+
 const Product = ()=> {
     const [items, setItems] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3001/products/")
-        .then((response)=> response.json())
-        .then((data)=> {
-            setItems(data)
-        })
+        // revisit
+        getItems("http://localhost:3001/products/")
+        .then((data)=> setItems(data))
     }, [])
 
     const [formData,setFormData] = useState({
         product: "",
         price: 0,
-        image: "https://via.placeholder.com/150"
+        image: "https://via.placeholder.com/150x100"
     })
     const handleSubmit = (event)=>{
         event.preventDefault();
